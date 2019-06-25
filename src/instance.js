@@ -104,6 +104,8 @@ export default class Instance {
 			<App
 				stdin={this.options.stdin}
 				stdout={this.options.stdout}
+				window={this.options.window}
+				document={this.options.document}
 				exitOnCtrlC={this.options.exitOnCtrlC}
 				onExit={this.unmount}
 			>
