@@ -4,6 +4,7 @@ import autoBind from 'auto-bind';
 import logUpdate from 'log-update';
 import isCI from 'is-ci';
 import signalExit from 'signal-exit';
+import ReactDOM from 'react-dom';
 import {createReconciler} from './reconciler';
 import createRenderer from './renderer';
 import {createDocumentHelpers} from './dom';
@@ -40,8 +41,13 @@ export default class Instance {
 		// so that it's rerendered every time, not just new static parts, like in non-debug mode
 		this.fullStaticOutput = '';
 
-		this.reconciler = createReconciler(this.documentHelpers);
-		this.container = this.reconciler.createContainer(this.rootNode, false, false);
+		if (options.document) {
+			this.container = this.rootNode;
+			options.document.body.append(this.rootNode);
+		} else {
+			this.reconciler = createReconciler(this.documentHelpers);
+			this.container = this.reconciler.createContainer(this.rootNode, false, false);
+		}
 
 		this.exitPromise = new Promise((resolve, reject) => {
 			this.resolveExitPromise = resolve;
@@ -105,7 +111,11 @@ export default class Instance {
 			</App>
 		);
 
-		this.reconciler.updateContainer(tree, this.container);
+		if (this.options.document) {
+			ReactDOM.render(tree, this.container);
+		} else {
+			this.reconciler.updateContainer(tree, this.container);
+		}
 	}
 
 	unmount(error) {
@@ -125,7 +135,11 @@ export default class Instance {
 		}
 
 		this.isUnmounted = true;
-		this.reconciler.updateContainer(null, this.container);
+		if (this.options.document) {
+			ReactDOM.render(null, this.container);
+		} else {
+			this.reconciler.updateContainer(null, this.container);
+		}
 		instances.delete(this.options.stdout);
 
 		if (error instanceof Error) {
