@@ -34,7 +34,7 @@ const Color = ({children, ...colorProps}) => {
 	};
 
 	return (
-		<span style={{flexDirection: 'row'}} unstable__transformChildren={transformChildren}>
+		<span style={{flexDirection: 'row'}} unstable__transformchildren={transformChildren}>
 			{children}
 		</span>
 	);

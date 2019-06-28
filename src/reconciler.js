@@ -39,8 +39,8 @@ function createHostConfig(documentHelpers) {
 					}
 				} else if (key === 'style') {
 					Object.assign(node.style, value);
-				} else if (key === 'unstable__transformChildren') {
-					node.unstable__transformChildren = value; // eslint-disable-line camelcase
+				} else if (key === 'unstable__transformchildren') {
+					node.unstable__transformchildren = value; // eslint-disable-line camelcase
 				} else if (key === 'unstable__static') {
 					node.unstable__static = true; // eslint-disable-line camelcase
 				} else {
@@ -97,8 +97,8 @@ function createHostConfig(documentHelpers) {
 					}
 				} else if (key === 'style') {
 					Object.assign(node.style, value);
-				} else if (key === 'unstable__transformChildren') {
-					node.unstable__transformChildren = value; // eslint-disable-line camelcase
+				} else if (key === 'unstable__transformchildren') {
+					node.unstable__transformchildren = value; // eslint-disable-line camelcase
 				} else if (key === 'unstable__static') {
 					node.unstable__static = true; // eslint-disable-line camelcase
 				} else {

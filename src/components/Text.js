@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import chalk from 'chalk';
 
-const Text = ({bold, italic, underline, strikethrough, children, unstable__transformChildren}) => {
+const Text = ({bold, italic, underline, strikethrough, children, unstable__transformchildren}) => {
 	const transformChildren = children => {
 		if (bold) {
 			children = chalk.bold(children);
@@ -21,14 +21,14 @@ const Text = ({bold, italic, underline, strikethrough, children, unstable__trans
 			children = chalk.strikethrough(children);
 		}
 
-		if (unstable__transformChildren) {
-			children = unstable__transformChildren(children);
+		if (unstable__transformchildren) {
+			children = unstable__transformchildren(children);
 		}
 
 		return children;
 	};
 
-	return <span style={{flexDirection: 'row'}} unstable__transformChildren={transformChildren}>{children}</span>;
+	return <span style={{flexDirection: 'row'}} unstable__transformchildren={transformChildren}>{children}</span>;
 };
 
 Text.propTypes = {
@@ -37,7 +37,7 @@ Text.propTypes = {
 	underline: PropTypes.bool,
 	strikethrough: PropTypes.bool,
 	children: PropTypes.node.isRequired,
-	unstable__transformChildren: PropTypes.func
+	unstable__transformchildren: PropTypes.func
 };
 
 Text.defaultProps = {
@@ -45,7 +45,7 @@ Text.defaultProps = {
 	italic: false,
 	underline: false,
 	strikethrough: false,
-	unstable__transformChildren: undefined
+	unstable__transformchildren: undefined
 };
 
 export default Text;

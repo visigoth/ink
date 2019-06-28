@@ -29,7 +29,7 @@ export default class Box extends PureComponent {
 		alignItems: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
 		justifyContent: PropTypes.oneOf(['flex-start', 'center', 'flex-end', 'space-between', 'space-around']),
 		textWrap: PropTypes.oneOf(['wrap', 'truncate', 'truncate-start', 'truncate-middle', 'truncate-end']),
-		unstable__transformChildren: PropTypes.func,
+		unstable__transformchildren: PropTypes.func,
 		children: PropTypes.node
 	};
 
@@ -46,10 +46,10 @@ export default class Box extends PureComponent {
 	}
 
 	render() {
-		const {children, unstable__transformChildren, ...style} = this.props;
+		const {children, unstable__transformchildren, ...style} = this.props;
 
 		return (
-			<div ref={this.nodeRef} style={style} unstable__transformChildren={unstable__transformChildren}>
+			<div ref={this.nodeRef} style={style} unstable__transformchildren={unstable__transformchildren}>
 				{children}
 			</div>
 		);

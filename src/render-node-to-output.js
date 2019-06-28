@@ -47,8 +47,8 @@ const squashTextNodes = (documentHelpers, node) => {
 
 		// Since these text nodes are being concatenated, `Output` instance won't be able to
 		// apply children transform, so we have to do it manually here for each text node
-		if (childNode.unstable__transformChildren) {
-			nodeText = childNode.unstable__transformChildren(nodeText);
+		if (childNode.unstable__transformchildren) {
+			nodeText = childNode.unstable__transformchildren(nodeText);
 		}
 
 		text += nodeText;
@@ -72,8 +72,8 @@ const renderNodeToOutput = (documentHelpers, node, output, {offsetX = 0, offsetY
 	// Transformers are functions that transform final text output of each component
 	// See Output class for logic that applies transformers
 	let newTransformers = transformers;
-	if (node.unstable__transformChildren) {
-		newTransformers = [node.unstable__transformChildren, ...transformers];
+	if (node.unstable__transformchildren) {
+		newTransformers = [node.unstable__transformchildren, ...transformers];
 	}
 
 	// Nodes with only text inside
